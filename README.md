@@ -18,7 +18,7 @@ Luban的重构版本，感谢Luban作者提供的算法，此项目中含有大�
 ## 直接使用
 
 ```
-compile 'com.github.lengyue524.TaiShan:taishan:v0.1.0'
+compile 'com.github.lengyue524.TaiShan:taishan:0.1.1'
 ```
 
 ```java
@@ -46,8 +46,8 @@ private class CompressTask extends AsyncTask<Bitmap, Object, byte[]> {
 ## RxJava
 
 ```
-compile 'com.github.lengyue524.TaiShan:taishan:v0.1.0'
-compile 'com.github.lengyue524.TaiShan:rxtaishan:v0.1.0'
+compile 'com.github.lengyue524.TaiShan:taishan:0.1.1'
+compile 'com.github.lengyue524.TaiShan:rxtaishan:0.1.1'
 ```
 
 ### Rxjava Listener方式
