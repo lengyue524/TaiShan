@@ -10,9 +10,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-/**
- * Created by lihang1@yy.com on 2016/8/15.
- */
 public class TaiShan {
     public static final int FIRST_GEAR = 1;
     public static final int THIRD_GEAR = 3;

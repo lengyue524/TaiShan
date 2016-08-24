@@ -20,9 +20,6 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
-/**
- * Created by lihang1@yy.com on 2016/8/15.
- */
 public class RxTaiShan {
     private TaiShan mTaiShan;
 

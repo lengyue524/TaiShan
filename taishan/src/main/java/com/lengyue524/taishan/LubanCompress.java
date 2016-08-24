@@ -6,9 +6,6 @@ import android.graphics.Matrix;
 
 import java.io.ByteArrayOutputStream;
 
-/**
- * Created by lihang1@yy.com on 2016/8/15.
- */
 public abstract class LubanCompress {
     /**
      * obtain the thumbnail that specify the size

@@ -6,9 +6,6 @@ import android.graphics.BitmapFactory;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
-/**
- * Created by lihang1@yy.com on 2016/8/8.
- */
 public class BitmapInfo implements IImageInfo {
     private Bitmap mBitmap;
 

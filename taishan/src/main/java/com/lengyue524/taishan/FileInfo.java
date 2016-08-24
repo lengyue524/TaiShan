@@ -7,9 +7,6 @@ import android.media.ExifInterface;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by lihang1@yy.com on 2016/8/8.
- */
 public class FileInfo implements IImageInfo {
     private File mFile;
     private int width;

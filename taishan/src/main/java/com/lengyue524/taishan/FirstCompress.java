@@ -2,9 +2,6 @@ package com.lengyue524.taishan;
 
 import android.graphics.Bitmap;
 
-/**
- * Created by lihang1@yy.com on 2016/8/15.
- */
 public class FirstCompress extends LubanCompress implements IGear {
     @Override
     public byte[] compress(IImageInfo imageInfo) {
