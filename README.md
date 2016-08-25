@@ -55,7 +55,7 @@ compile 'com.github.lengyue524.TaiShan:rxtaishan:0.1.3'
 ```java
 RxTaiShan.get()
     .load(File)                     //传人要压缩的图片
-    .putGear(Luban.THIRD_GEAR)      //设定压缩档次，默认三挡
+    .putGear(TaiShan.THIRD_GEAR)      //设定压缩档次，默认三挡
     .setCompressListener(new OnCompressListener() { //设置回调
 
         @Override
