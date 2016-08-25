@@ -18,7 +18,7 @@ Luban的重构版本，感谢Luban作者提供的算法，此项目中含有大�
 ## 直接使用
 
 ```
-compile 'com.github.lengyue524.TaiShan:taishan:0.1.1'
+compile 'com.github.lengyue524.TaiShan:taishan:0.1.3'
 ```
 
 ```java
@@ -46,8 +46,8 @@ private class CompressTask extends AsyncTask<Bitmap, Object, byte[]> {
 ## RxJava
 
 ```
-compile 'com.github.lengyue524.TaiShan:taishan:0.1.1'
-compile 'com.github.lengyue524.TaiShan:rxtaishan:0.1.1'
+compile 'com.github.lengyue524.TaiShan:taishan:0.1.3'
+compile 'com.github.lengyue524.TaiShan:rxtaishan:0.1.3'
 ```
 
 ### Rxjava Listener方式
@@ -78,32 +78,32 @@ RxTaiShan.get()
 
 ```java
 //直接压缩Bitmap
-    RxTaiShan.get()
-            .load(new BitmapInfo(bitmap))// 压缩Bitmap
-            // .load(new FileInfo(file)) // 压缩文件
-            .putGear(TaiShan.THIRD_GEAR)// 默认同Luban第三档
-            //.putGear(new IGear)// 自定义压缩算法
-            .asObservable()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnError(new Action1<Throwable>() {
-                @Override
-                public void call(Throwable throwable) {
-                    throwable.printStackTrace();
-                }
-            })
-            .onErrorResumeNext(new Func1<Throwable, Observable<? extends byte[]>>() {
-                @Override
-                public Observable<? extends byte[]> call(Throwable throwable) {
-                    return Observable.empty();
-                }
-            })
-            .subscribe(new Action1<byte[]>() {
-                @Override
-                public void call(byte[] bytes) {
-                  String path = MainActivity.this.getCacheDir() + File.separator + System.currentTimeMillis();
-                  File file = TaiShan.saveImage(path, bytes);// 保存文件
-                  Bitmap bitmap = TaiShan.toBitmap(bytes);// 转换为Bitmap
-                }
-            });
+RxTaiShan.get()
+        .load(new BitmapInfo(bitmap))// 压缩Bitmap
+        // .load(new FileInfo(file)) // 压缩文件
+        .putGear(TaiShan.THIRD_GEAR)// 默认同Luban第三档
+        //.putGear(new IGear)// 自定义压缩算法
+        .asObservable()
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .doOnError(new Action1<Throwable>() {
+            @Override
+            public void call(Throwable throwable) {
+                throwable.printStackTrace();
+            }
+        })
+        .onErrorResumeNext(new Func1<Throwable, Observable<? extends byte[]>>() {
+            @Override
+            public Observable<? extends byte[]> call(Throwable throwable) {
+                return Observable.empty();
+            }
+        })
+        .subscribe(new Action1<byte[]>() {
+            @Override
+            public void call(byte[] bytes) {
+                String path = MainActivity.this.getCacheDir() + File.separator + System.currentTimeMillis();
+                File file = TaiShan.saveImage(path, bytes);// 保存文件
+                Bitmap bitmap = TaiShan.toBitmap(bytes);// 转换为Bitmap
+            }
+        });
 ```
