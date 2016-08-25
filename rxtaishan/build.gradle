@@ -4,12 +4,12 @@ apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.lengyue524'
 
 android {
-    compileSdkVersion 24
+    compileSdkVersion 21
     buildToolsVersion "23.0.3"
 
     defaultConfig {
         minSdkVersion 9
-        targetSdkVersion 24
+        targetSdkVersion 19
         versionCode 1
         versionName "1.0"
     }

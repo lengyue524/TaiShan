@@ -7,7 +7,7 @@ android {
     defaultConfig {
         applicationId "com.lengyue524.sampletaishan"
         minSdkVersion 15
-        targetSdkVersion 24
+        targetSdkVersion 19
         versionCode 1
         versionName "1.0"
     }
