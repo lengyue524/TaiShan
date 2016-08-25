@@ -48,8 +48,9 @@ public class RxTaiShan {
         return this;
     }
 
-    public void setCompressListener(OnCompressListener compressListener) {
+    public RxTaiShan setCompressListener(OnCompressListener compressListener) {
         this.compressListener = compressListener;
+        return this;
     }
 
     public void launch() {
