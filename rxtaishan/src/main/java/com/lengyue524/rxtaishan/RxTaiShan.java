@@ -14,11 +14,13 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.schedulers.Schedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 public class RxTaiShan {
     private TaiShan mTaiShan;
@@ -57,17 +59,18 @@ public class RxTaiShan {
         if (compressListener != null) {
             compressListener.onStart();
         }
+
         asObservable().observeOn(Schedulers.computation())
-                .subscribeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<byte[]>() {
+                .subscribeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<byte[]>() {
             @Override
-            public void call(byte[] bytes) {
+            public void accept(byte[] bytes) {
                 if (compressListener != null) {
                     compressListener.onSuccess(bytes);
                 }
             }
-        }, new Action1<Throwable>() {
+        }, new Consumer<Throwable>() {
             @Override
-            public void call(Throwable throwable) {
+            public void accept(Throwable throwable) {
                 if (compressListener != null) {
                     compressListener.onError(throwable);
                 }
@@ -76,9 +79,9 @@ public class RxTaiShan {
     }
 
     public Observable<byte[]> asObservable() {
-        return Observable.create(new Observable.OnSubscribe<byte[]>() {
+        return Observable.create(new ObservableOnSubscribe<byte[]>() {
             @Override
-            public void call(Subscriber<? super byte[]> subscriber) {
+            public void subscribe(@NonNull ObservableEmitter<byte[]> subscriber) throws Exception {
                 subscriber.onNext(mTaiShan.launch());
             }
         });
