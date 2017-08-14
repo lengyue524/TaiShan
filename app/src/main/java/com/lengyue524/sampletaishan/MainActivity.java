@@ -22,12 +22,12 @@ import com.lengyue524.taishan.TaiShan;
 import java.io.File;
 import java.util.ArrayList;
 
+import io.reactivex.functions.Function;
 import me.iwf.photopicker.PhotoPicker;
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
+import io.reactivex.Observable;
+import io.reactivex.schedulers.Schedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -96,21 +96,21 @@ public class MainActivity extends AppCompatActivity {
                 .asObservable()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnError(new Action1<Throwable>() {
+                .doOnError(new Consumer<Throwable>() {
                     @Override
-                    public void call(Throwable throwable) {
+                    public void accept(Throwable throwable) {
                         throwable.printStackTrace();
                     }
                 })
-                .onErrorResumeNext(new Func1<Throwable, Observable<? extends byte[]>>() {
+                .onErrorResumeNext(new Function<Throwable, Observable<? extends byte[]>>() {
                     @Override
-                    public Observable<? extends byte[]> call(Throwable throwable) {
+                    public Observable<? extends byte[]> apply(Throwable throwable) {
                         return Observable.empty();
                     }
                 })
-                .subscribe(new Action1<byte[]>() {
+                .subscribe(new Consumer<byte[]>() {
                     @Override
-                    public void call(byte[] bytes) {
+                    public void accept(byte[] bytes) {
                         showResult(bytes);
                     }
                 });
@@ -126,21 +126,21 @@ public class MainActivity extends AppCompatActivity {
                 .asObservable()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnError(new Action1<Throwable>() {
+                .doOnError(new Consumer<Throwable>() {
                     @Override
-                    public void call(Throwable throwable) {
+                    public void accept(Throwable throwable) {
                         throwable.printStackTrace();
                     }
                 })
-                .onErrorResumeNext(new Func1<Throwable, Observable<? extends byte[]>>() {
+                .onErrorResumeNext(new Function<Throwable, Observable<? extends byte[]>>() {
                     @Override
-                    public Observable<? extends byte[]> call(Throwable throwable) {
+                    public Observable<? extends byte[]> apply(Throwable throwable) {
                         return Observable.empty();
                     }
                 })
-                .subscribe(new Action1<byte[]>() {
+                .subscribe(new Consumer<byte[]>() {
                     @Override
-                    public void call(byte[] bytes) {
+                    public void accept(byte[] bytes) {
                         showResult(bytes);
                     }
                 });
